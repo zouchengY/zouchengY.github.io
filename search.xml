@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<h2 id="1、数据库相关概念"><a href="#1、数据库相关概念" class="headerlink" title="1、数据库相关概念"></a>1、数据库相关概念</h2><table><thead><tr><th>名称</th><th>全称</th><th>简称</th></tr></thead><tbody><tr><td>数据库</td><td>存储数据的仓库，数据是有组织的进行存储</td><td>DataBase（DB）</td></tr><tr><td>数据库管理系统</td><td>操纵和管理数据库的大型软件</td><td>DataBase ManagementSystem (DBMS)</td></tr><tr><td>SQL</td><td>操作关系型数据库的编程语言，定义了一套操作关系型数据库统一标准</td><td>Structured QueryLanguage (SQL)</td></tr></tbody></table><h2 id="2、MySQL数据库"><a href="#2、MySQL数据库" class="headerlink" title="2、MySQL数据库"></a>2、MySQL数据库</h2><p>官方： <a href="https://www.mysql.com/">https://www.mysql.com/</a> </p><p>MySQL官方提供了两种不同的版本： </p><ul><li>社区版本（MySQL Community Server）</li></ul><p>免费， MySQL不提供任何技术支持 </p><ul><li>商业版本（MySQL Enterprise Edition）</li></ul><p>收费，可以使用30天，官方提供技术支持</p><h2 id="3、数据模型"><a href="#3、数据模型" class="headerlink" title="3、数据模型"></a>3、数据模型</h2><ol><li>关系型数据库（RDBMS）</li></ol><p>概念：建立在关系模型基础上，由多张相互连接的二维表组成的数据库。 </p><p>而所谓二维表，指的是由行和列组成的表，如下图（就类似于Excel表格数据，有表头、有列、有行， </p><p>还可以通过一列关联另外一个表格中的某一列数据）。我们之前提到的MySQL、Oracle、DB2、 </p><p>SQLServer这些都是属于关系型数据库，里面都是基于二维表存储数据的。简单说，基于二维表存储 </p><p>数据的数据库就成为关系型数据库，不是基于二维表存储数据的数据库，就是非关系型数据库。<br>特点：<br>A. 使用表存储数据，格式统一，便于维护。<br>B. 使用SQL语言操作，标准统一，使用方便。<br>2. 数据模型<br>MySQL是关系型数据库，是基于二维表进行数据存储的:<br>我们可以通过MySQL客户端连接数据库管理系统DBMS，然后通过DBMS操作数据库。可以使用SQL语句，通过数据库管理系统操作数据库，以及操作数据库中的表结构及数据。一个数据库服务器中可以创建多个数据库，一个数据库中也可以包含多张表，而一张表中又可以包含多行记录</p><h2 id="3、SQL"><a href="#3、SQL" class="headerlink" title="3、SQL"></a>3、SQL</h2><p>全称 Structured Query Language，结构化查询语言。操作关系型数据库的编程语言，定义了<br>一套操作关系型数据库统一标准 。</p><h3 id="1、SQL通用语法"><a href="#1、SQL通用语法" class="headerlink" title="1、SQL通用语法"></a>1、SQL通用语法</h3><p>在学习具体的SQL语句之前，先来了解一下SQL语言的同于语法。<br>1). SQL语句可以单行或多行书写，以分号结尾。<br>2). SQL语句可以使用空格&#x2F;缩进来增强语句的可读性。<br>3). MySQL数据库的SQL语句不区分大小写，关键字建议使用大写。<br>4). 注释：<br>单行注释：– 注释内容 或 # 注释内容<br>多行注释：&#x2F;* 注释内容 *&#x2F;</p><h3 id="2、SQL分类"><a href="#2、SQL分类" class="headerlink" title="2、SQL分类"></a>2、SQL分类</h3><p>SQL语句，根据其功能，主要分为四类：DDL、DML、DQL、DCL。 </p><table><thead><tr><th>分类</th><th>全称</th><th>说明</th></tr></thead><tbody><tr><td>DDL</td><td>Data DefinitionLanguage</td><td>数据定义语言，用来定义数据库对象(数据库，表，字段)</td></tr><tr><td>DML</td><td>Data ManipulationLanguage</td><td>数据操作语言，用来对数据库表中的数据进行增删改</td></tr><tr><td>DQL</td><td>Data Query Language</td><td>数据查询语言，用来查询数据库中表的记录</td></tr><tr><td>DCL</td><td>Data Control Language</td><td>数据控制语言，用来创建数据库用户、控制数据库的访问权限</td></tr></tbody></table><h3 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h3><p>Data Definition Language，数据定义语言，用来定义数据库对象(数据库，表，字段) 。</p><h4 id="1-查询所有数据库"><a href="#1-查询所有数据库" class="headerlink" title="1. 查询所有数据库"></a>1. 查询所有数据库</h4><p>show databases ;</p><h4 id="2-查询当前数据库"><a href="#2-查询当前数据库" class="headerlink" title="2. 查询当前数据库"></a>2. 查询当前数据库</h4><p>select database() ;</p><h4 id="3-创建数据库"><a href="#3-创建数据库" class="headerlink" title="3. 创建数据库"></a>3. 创建数据库</h4><p>create database [ if not exists ] 数据库名 [ default charset 字符集 ] [ collate 排序 规则 ] ;</p><h4 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h4><p>A. 创建一个itcast数据库, 使用数据库默认的字符集。<br>create database itcast;<br>在同一个数据库服务器中，不能创建两个名称相同的数据库，否则将会报错。<br>可以通过if not exists 参数来解决这个问题，数据库不存在, 则创建该数据库，如果存在，则不<br>创建。<br>create database if not extists itcast;<br>B. 创建一个itheima数据库，并且指定字符集<br>create database itheima default charset utf8mb4;</p><h4 id="4-删除数据库"><a href="#4-删除数据库" class="headerlink" title="4. 删除数据库"></a>4. 删除数据库</h4><p>如果删除一个不存在的数据库，将会报错。此时，可以加上参数 if exists ，如果数据库存在，再<br>执行删除，否则不执行删除。<br>drop database [ if exists ] ；</p><h4 id="5、-切换数据库"><a href="#5、-切换数据库" class="headerlink" title="5、 切换数据库"></a>5、 切换数据库</h4><p>我们要操作某一个数据库下的表时，就需要通过该指令，切换到对应的数据库下，否则是不能操作的。<br>比如，切换到itcast数据，执行如下SQL:<br>use itcast;</p>]]></content>
       
       
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -30,6 +36,12 @@
         <content type="html"><![CDATA[<h2 id="SpringBoot简介"><a href="#SpringBoot简介" class="headerlink" title="SpringBoot简介"></a>SpringBoot简介</h2><p>Spring Boot是由Pivotal团队提供的基于Spring的全新框架，旨在简化Spring应用的初始搭建和开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。Spring官网给的定义是：Spring Boot是所有基于Spring开发项目的起点。</p><ul><li><p>Spring Boot集成了绝大部分目前流行的开发框架，就像Maven集成了所有的JAR包一样，Spring Boot集成了几乎所有的框架，使得开发者能快速搭建Spring项目。</p></li><li><p>Spring Boot的核心设计思想是“约定优于配置”。基于这一设计原则，Spring Boot极大地简化了项目和框架的配置。比如在使用Spring开发Web项目时，我们需要配置web.xml、Spring和MyBatis等，还需要将它们集成在一起。而使用Spring Boot一切将变得极其简单，它采用了大量的默认配置来简化这些文件的配置过程，只需引入对应的Starters（启动器）。</p></li><li><p>我们知道Spring Boot的核心设计思想是“约定优于配置”，Spring Boot提供的所有Starters都是遵循这一思想实现的。那么，究竟什么是“约定优于配置”呢？“约定优于配置”也被称作“按约定编程”，是一种软件设计范式，旨在减少软件开发者需要的配置项，这样既能使软件保持简单而又不失灵活性。</p></li><li><p>Spring是一个开源生态体系，是集大成者。其核心是控制反转（Inversion ofControl，IoC）和面向切面编程（Aspect Oriented Programming，AOP）。正是IoC和AOP这两个核心功能成就了强大的Spring，Spring在这两大核心功能上不断地发展壮大，才有了Spring MVC等一系列成熟的产品，最终构建了功能强大的Spring生态帝国。</p></li><li><p>Spring Boot是在Spring的基础上发展而来的，它不是为了取代Spring，而是为了简化Spring应用的创建、运行、调试、部署，让开发者更容易地使用Spring。它将目前各种比较成熟的服务框架和第三方组件组合起来，按照“约定优于配置”的设计思想进行重新封装，屏蔽掉复杂的配置和实现，最终给开发者提供一套简单、易用、易部署、易维护的分布式系统开发工具包。</p><p>​    </p></li><li><p>Spring Cloud是基于Spring Boot实现的分布式微服务框架，它利用SpringBoot简单、易用、便利的特性简化了分布式系统基础设施的开发，如服务发现、服务注册、配置中心、消息总线、负载均衡、断路器、数据监控等基础组件都可以用Spring Boot的开发风格做到一键启动和部署。</p></li><li><p>我们都知道，采用微服务架构，服务的数量会非常多，管理特别麻烦，而Spring Cloud就是一套分布式微服务治理框架，可以说是这些微服务的大管家。作为大管家Spring Cloud就需要提供各种组件和方案来治理与维护整个微服务系统，比如服务之间的通信、熔断、监控等。Spring Cloud利用Spring Boot的特性集成了开源行业中优秀的组件，在微服务架构中对外提供了一套服务治理的解决方案。</p></li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> Java开发 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -48,6 +60,12 @@
       
         <content type="html"><![CDATA[<p>欢迎大家访问我的博客，本博客创建的初衷是存放个人平时使用的一些学习资料，希望各位访客可以有所收获</p><h2 id="欢迎光临本客栈"><a href="#欢迎光临本客栈" class="headerlink" title="欢迎光临本客栈"></a>欢迎光临本客栈</h2><h3 id="作者介绍"><a href="#作者介绍" class="headerlink" title="作者介绍"></a>作者介绍</h3><p>作者本人是一名大数据技术专业的在读准大二学生，对Java很感兴趣于是在课余时间学习了Java开发的相关技术，希望在今后对自己有所帮助</p><h3 id="目前掌握的技术"><a href="#目前掌握的技术" class="headerlink" title="目前掌握的技术"></a>目前掌握的技术</h3><p>JavaSE、Python基础、Linux编程、Shell、Scala、Hadoop生态、<br>HiveSql、MySql、Mybatis、JavaWeb、SparkCore、SparkSql、<br>Html、JavaScript、ruoyi脚手架、Spring、SpingMVC、Mybatis-Plus、<br>Elementui、Git、Nodejs……</p><h3 id="目前在学"><a href="#目前在学" class="headerlink" title="目前在学"></a>目前在学</h3><p>Vue、SpringBoot、SpingSecurity、SpringCloud……</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 关于作者 </category>
+          
+      </categories>
       
       
         <tags>

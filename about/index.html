@@ -402,7 +402,7 @@
 </script> -->
 <!-- 随机轮播 -->
 <!-- <script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/4.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/10.jpg)');
 </script> -->
 <script>
     $('.bg-cover').css('background-image', 'url(/medias/mybg/6.jpg)');
@@ -426,6 +426,11 @@
 </div>
 
 
+
+<div class="statis">
+    <span class="count"><a href="/categories">3</a></span>
+    <span class="name">分类</span>
+</div>
 
 
 
@@ -451,6 +456,11 @@
 </div>
 
 
+
+<div class="statis">
+    <span class="count"><a href="/categories">3</a></span>
+    <span class="name">分类</span>
+</div>
 
 
 
@@ -641,7 +651,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [],
+                data: [{"name":"关于作者","value":1},{"name":"数据库","value":1},{"name":"Java开发","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -947,6 +957,18 @@
         <div class="photo col s12 m6 l4" data-aos="fade-up">
             <div class="img-item" data-src="/medias/banner/8.jpg">
                 <img src="/medias/banner/8.jpg" class="responsive-img">
+            </div>
+        </div>
+        
+        <div class="photo col s12 m6 l4" data-aos="fade-up">
+            <div class="img-item" data-src="/medias/banner/9.jpg">
+                <img src="/medias/banner/9.jpg" class="responsive-img">
+            </div>
+        </div>
+        
+        <div class="photo col s12 m6 l4" data-aos="fade-up">
+            <div class="img-item" data-src="/medias/banner/10.jpg">
+                <img src="/medias/banner/10.jpg" class="responsive-img">
             </div>
         </div>
         
@@ -1383,10 +1405,21 @@ $(function () {
 
     <!--腾讯兔小巢-->
     
+        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
+            <a title="兔小巢" target="_blank" rel="noopener" href="https://support.qq.com/products/428601"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
+        </div>
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     
 
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     
